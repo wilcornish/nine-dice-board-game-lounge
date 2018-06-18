@@ -29,4 +29,9 @@ class LoanTest < MiniTest::Test
     assert_equal('Saturday', @loan1.day_borrowed())
   end
 
+  def test_change_returned__true
+    @loan1.return
+    assert_equal(true, @loan1.returned)
+  end
+
 end

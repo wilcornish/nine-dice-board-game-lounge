@@ -10,4 +10,8 @@ class Loan
     @day_borrowed = options['day_borrowed']
   end
 
+  def return
+    @returned = true
+  end
+
 end
