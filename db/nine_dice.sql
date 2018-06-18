@@ -22,6 +22,6 @@ CREATE TABLE loans (
   id SERIAL8 PRIMARY KEY,
   game_id INT8 REFERENCES games(id),
   customer_id INT8 REFERENCES customers(id),
-  returned BOOLEAN,
+  returned BOOLEAN DEFAULT false,
   day_borrowed VARCHAR(255)
 );
