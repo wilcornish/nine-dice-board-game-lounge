@@ -54,5 +54,13 @@ game1.save()
 game2.save()
 game3.save()
 
+loan1 = Loan.new({
+  'customer_id' => customer1.id,
+  'game_id' => game1.id,
+  'day_borrowed' => "Saturday"
+  })
+
+loan1.save()
+
 binding.pry
 nil

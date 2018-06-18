@@ -29,7 +29,7 @@ class Loan
       $1, $2, $3, $4
     )
     RETURNING id"
-    values = [@customer_id, @game_id]
+    values = [@customer_id, @game_id, @returned, @day_borrowed]
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
   end
