@@ -19,7 +19,7 @@ class Game
   end
 
   def save()
-    sql = "INSERT INTO
+    sql = "INSERT INTO games
     (
       name,
       owner,

@@ -14,7 +14,7 @@ class Customer
   sql = "INSERT INTO customers
   (
     name,
-    type
+    badge_number
   )
   VALUES
   (
