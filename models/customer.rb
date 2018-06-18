@@ -1,3 +1,5 @@
+require_relative('../db/sql_runner.rb')
+
 class Customer
 
   attr_reader( :id, :badge_number, :name)
@@ -19,7 +21,7 @@ class Customer
     $1, $2
   )
   RETURNING id"
-  values = [@name, @type]
+  values = [@name, @badge_number]
   results = SqlRunner.run(sql, values)
   @id = results.first()['id'].to_i
 end

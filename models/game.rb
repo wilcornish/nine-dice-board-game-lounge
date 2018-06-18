@@ -1,3 +1,5 @@
+require_relative('../db/sql_runner.rb')
+
 class Game
 
   attr_reader( :id, :name, :owner, :times_played,  :genre, :player_count, :play_time )

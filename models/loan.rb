@@ -1,3 +1,5 @@
+require_relative('../db/sql_runner.rb')
+
 class Loan
 
   attr_reader( :id, :game_id, :customer_id, :returned, :day_borrowed)
