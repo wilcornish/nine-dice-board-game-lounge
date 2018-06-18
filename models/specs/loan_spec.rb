@@ -21,4 +21,8 @@ class LoanTest < MiniTest::Test
     assert_equal(1, @loan1.customer_id)
   end
 
+  def test_is_returned__false
+    assert_equal(false, @loan1.returned)
+  end
+
 end
