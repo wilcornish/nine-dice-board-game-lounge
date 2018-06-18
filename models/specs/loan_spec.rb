@@ -17,5 +17,8 @@ class LoanTest < MiniTest::Test
     assert_equal(1, @loan1.game_id)
   end
 
+  def test_has_customer_id
+    assert_equal(1, @loan1.customer_id)
+  end
 
 end
