@@ -39,11 +39,22 @@ class Game
   end
 
   def customers()
-  sql = "SELECT customers.* FROM customers INNER JOIN loans ON loans.customer_id = customers.id WHERE loan.game_id = $1;"
-  values = [@id]
-  results = SqlRunner.run(sql, values)
-  return results.map { |customer| Customer.new(customer) }
-end
+    sql = "SELECT customers.* FROM customers INNER JOIN loans ON loans.customer_id = customers.id WHERE loan.game_id = $1;"
+    values = [@id]
+    results = SqlRunner.run(sql, values)
+    return results.map { |customer| Customer.new(customer) }
+  end
+
+  def check_avaliable()
+    sql = 'SELECT * FROM loans WHERE (loans.game_id = $1 AND loans.returned = false)'
+    values = [@id]
+    results = SqlRunner.run(sql, values)
+    if results == nil
+      return true
+    else
+      return false
+    end
+  end
 
   def self.all()
     sql = "SELECT * FROM games"

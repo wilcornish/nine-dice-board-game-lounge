@@ -31,4 +31,13 @@ class GameTest < MiniTest::Test
     @game1.increment()
     assert_equal(1, @game1.times_played)
   end
+
+  # def test_game_is_avaliable__true
+  #   assert_equal(true, #game1 in DB .check_avaliable())
+  # end
+  #
+  # def test_game_is_avaliable__false
+  #   assert_equal(true, #game2 in DB .check_avaliable())
+  end
+
 end

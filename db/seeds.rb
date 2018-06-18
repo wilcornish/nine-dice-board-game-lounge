@@ -3,8 +3,8 @@ require_relative( "../models/loan.rb" )
 require_relative( "../models/game.rb" )
 require("pry-byebug")
 
-Customer.delete_all()
 Loan.delete_all()
+Customer.delete_all()
 Game.delete_all()
 
 customer1 = Customer.new({
