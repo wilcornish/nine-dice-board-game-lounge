@@ -33,6 +33,17 @@ def games
   return results.map { |game| Game.new(game) }
 end
 
+def check_no_loans()
+  sql = 'SELECT * FROM loans WHERE (loans.customer_id = $1 AND loans.returned = false)'
+  values = [@id]
+  results = SqlRunner.run(sql, values)
+  if results == nil
+    return true
+  else
+    return false
+  end
+end
+
 def self.all()
   sql = "SELECT * FROM customers"
   results = SqlRunner.run( sql )
