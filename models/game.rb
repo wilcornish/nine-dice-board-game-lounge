@@ -12,4 +12,8 @@ class Game
     @play_time = options['play_time'].to_i
   end
 
+  def increment
+    @times_played += 1
+  end
+
 end

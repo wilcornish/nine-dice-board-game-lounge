@@ -26,4 +26,9 @@ class GameTest < MiniTest::Test
   def test_game_has_times_played
     assert_equal(0,@game1.times_played)
   end
+
+  def test_increment_plays
+    @game1.increment()
+    assert_equal(1, @game1.times_played)
+  end
 end
