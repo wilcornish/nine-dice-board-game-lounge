@@ -38,6 +38,16 @@ class Game
     @id = results.first()['id'].to_i
   end
 
+  def update()
+    sql = "UPDATE games
+      SET (name, owner, times_played, genre, player_count, play_time)
+      = ($1, $2, $3, $4, $5, $6)
+      WHERE ID = $7"
+    values = [@name, @owner, @times_played, @genre, @player_count, @play_time, @id]
+    SqlRunner.run(sql, values)
+  end
+
+
   def customers()
     sql = "SELECT customers.* FROM customers INNER JOIN loans ON loans.customer_id = customers.id WHERE loans.game_id = $1;"
     values = [@id]
@@ -69,7 +79,7 @@ class Game
   def self.delete_all
     sql = "DELETE FROM games"
     SqlRunner.run(sql)
-  end
+end
 
   def self.delete( id )
     sql = "DELETE FROM games WHERE id = $1"
