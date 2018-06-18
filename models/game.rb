@@ -16,4 +16,56 @@ class Game
     @times_played += 1
   end
 
+  def save()
+    sql = "INSERT INTO
+    (
+      name,
+      owner,
+      times_played,
+      genre,
+      player_count,
+      play_time
+    )
+    VALUES
+    (
+      $1, $2, $3, $4, $5, $6
+    )
+    RETURNING id"
+    values = [@name, @owner, @times_played, @genre, @player_count, @play_time]
+    results = SqlRunner.run(sql, values)
+    @id = results.first()['id'].to_i
+  end
+
+  def customers()
+  sql = "SELECT customers.* FROM customers INNER JOIN loans ON loans.customer_id = customers.id WHERE loan.game_id = $1;"
+  values = [@id]
+  results = SqlRunner.run(sql, values)
+  return results.map { |customer| Customer.new(customer) }
+end
+
+  def self.all()
+    sql = "SELECT * FROM games"
+    results = SqlRunner.run( sql )
+    return results.map {|game| Game.new( game)}
+  end
+
+  def self.find( id )
+    sql = "SELECT * FROM games
+    WHERE id = $1"
+    values = [id]
+    results = SqlRunner.run( sql, values )
+    return Game.new(results.first)
+  end
+
+  def self.delete_all
+    sql = "DELETE FROM games"
+    SqlRunner.run(sql)
+  end
+
+  def self.delete( id )
+    sql = "DELETE FROM games WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
 end
