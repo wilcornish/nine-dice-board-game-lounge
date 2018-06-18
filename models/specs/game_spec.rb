@@ -22,4 +22,8 @@ class GameTest < MiniTest::Test
   def test_game_has_owner
     assert_equal('Wil', @game1.owner)
   end
+
+  def test_game_has_times_played
+    assert_equal(0,@game1.times_played)
+  end
 end
