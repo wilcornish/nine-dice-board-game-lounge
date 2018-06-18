@@ -1,4 +1,6 @@
 require_relative('../db/sql_runner.rb')
+require_relative('./customer.rb')
+require_relative('./game.rb')
 
 class Loan
 
@@ -54,6 +56,22 @@ class Loan
     values = [@customer_id]
     results = SqlRunner.run(sql, values)
     return Customer.new(results.first)
+  end
+
+  def self.new_loan(customer, game)
+    if (customer.check_no_loans() && game.check_avaliable()) == true
+      new_loan = Loan.new({
+        'customer_id' => customer.id(),
+        'game_id' => game.id(),
+        'day_borrowed' => "%A"
+        })
+      new_loan.save
+    elsif customer.check_no_loans() == false
+      return "Customer has borrowed game already"
+    else
+      return "Game is already loaned"
+    end
+
   end
 
   def self.delete_all()

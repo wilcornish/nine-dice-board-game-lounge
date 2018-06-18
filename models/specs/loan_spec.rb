@@ -13,13 +13,13 @@ class LoanTest < MiniTest::Test
       'day_borrowed' => "Saturday"
       })
 
-      @game1 = Game.new({
-        'name' => 'Mysterium',
-        'owner' => 'Wil',
-        'genre' => 'co-operative',
-        'player_count' => 5,
-        'play_time' => 45
-        })
+    @game1 = Game.new({
+      'name' => 'Mysterium',
+      'owner' => 'Wil',
+      'genre' => 'co-operative',
+      'player_count' => 5,
+      'play_time' => 45
+      })
   end
 
   def test_has_game_id
