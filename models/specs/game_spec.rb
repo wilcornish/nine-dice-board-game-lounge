@@ -19,4 +19,7 @@ class GameTest < MiniTest::Test
     assert_equal('Mysterium', @game1.name)
   end
 
+  def test_game_has_owner
+    assert_equal('Wil', @game1.owner)
+  end
 end
