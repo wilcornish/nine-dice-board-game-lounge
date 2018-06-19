@@ -37,7 +37,6 @@ def existing_loans?()
   sql = 'SELECT * FROM loans WHERE (loans.customer_id = $1 AND loans.returned = false)'
   values = [@id]
   results = SqlRunner.run(sql, values)
-#returns an empty result, how to differentiate this from content?
   return results.count == 0
 end
 
