@@ -1,0 +1,9 @@
+<h2>This customer has already borrowed a game.</h2>
+
+<%for loan in @loans %>
+<p>Game: <%=loan.game.name%></p>
+<p>Borrower: <%=loan.customer.name  %></p>
+<p>Day Borrowed: <%= loan.day_borrowed %></p>
+<p>Returned: <%loan.returned%></p>
+<hr />
+<%end%>
