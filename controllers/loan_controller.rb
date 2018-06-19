@@ -9,20 +9,20 @@ also_reload( '../models/*' )
 get '/loans' do
   @customers = Customer.all()
   @games = Game.all()
-  erb ( :loans/index )
+  erb ( :'loans/index' )
 end
 
 #index
 get '/loans/:id' do
   @loans = Loan.find(params['id'].to_i)
-  erb ( :loans/show )
+  erb ( :'loans/show' )
 end
 
 #new
 get '/games/new' do
   @games = Game.all()
   @customers = Customer.all()
-  erb( :loans/new )
+  erb( :'loans/new' )
 end
 
 #create
