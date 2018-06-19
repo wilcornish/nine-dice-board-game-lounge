@@ -1,0 +1,9 @@
+<p>Name: <%= @game.name() %> </p>
+<p>Owner: <%= @game.owner() %> </p>
+<p>Times Played: <%=@game.times_played() %></p>
+<p>Genre: <%=@game.genre()  %></p>
+<p>Player Count:
+<%=@game.player_count()  %></p>
+<p>Play Time: <%=@game.play_time()  %></p>
+
+<a href="/games/<%=@game.id%>/edit">Edit Game</a>
