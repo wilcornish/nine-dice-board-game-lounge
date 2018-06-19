@@ -36,6 +36,8 @@ class Loan
     @id = results.first()['id'].to_i
   end
 
+  date = Date.new()
+
   def update()
     sql = "UPDATE loans
       SET (customer_id, game_id, returned, day_borrowed)
@@ -49,6 +51,13 @@ class Loan
     sql = "SELECT * FROM loans"
     results = SqlRunner.run( sql )
     return results.map {|loan| Loan.new( loan )}
+  end
+
+  def self.find(id)
+    sql = "SELECT * FROM loans WHERE ID = $1"
+    values = [id]
+    results = SqlRunner.run(sql, values)
+    return Loan.new(results.first)
   end
 
   def game()
@@ -68,24 +77,28 @@ class Loan
   end
 
   def self.check_out(customer, game)
-    if (customer.existing_loans?() && game.avaliable?()) == true
+    new_loan = nil
+    if customer.existing_loans?() && game.avaliable?()
+      day = Time.now.strftime("%A")
       new_loan = Loan.new({
         'customer_id' => customer.id(),
         'game_id' => game.id(),
-        'day_borrowed' => "day"
+        'day_borrowed' => "#{day}"
         })
       new_loan.save
-    elsif customer.existing_loans?() == false
-      return "Customer has borrowed game already"
-    else
-      return "Game is already loaned"
     end
+    # elsif customer.existing_loans?() == false
+    #   return "Customer has borrowed game already"
+    # else
+    #   return "Game is already loaned"
+    # end
+    return new_loan
   end
 
   def self.check_in(game)
     game.increment()
     game.update()
-    sql = "SELECT * FROM loans WHERE game_id = $1"
+    sql = "SELECT * FROM loans WHERE (game_id = $1 AND returned = false)"
     values = [game.id()]
     loan = SqlRunner.run(sql, values).first
     to_return = Loan.new( loan )
