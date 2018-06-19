@@ -6,24 +6,24 @@ also_reload( '../models/*' )
 #show
 get '/games' do
   @games = Game.all()
-  erb ( :games/index )
+  erb ( :'games/index' )
 end
 
 #index
 get '/games/:id' do
   @games = Game.find(params['id'].to_i)
-  erb ( :games/show )
+  erb ( :'games/show' )
 end
 
 #new
 get '/games/new' do
-  erb( :games/new )
+  erb( :'games/new' )
 end
 
 #edit
 get 'games/:id/edit' do
   @game = Game.find(params[:id])
-  erb (:edit)
+  erb (:'game/edit')
 end
 
 #create
