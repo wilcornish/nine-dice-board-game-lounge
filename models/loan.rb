@@ -87,24 +87,15 @@ class Loan
     game.update()
     sql = "SELECT * FROM loans WHERE game_id = $1"
     values = [game.id()]
-    loans = SqlRunner.run(sql, values)
-    p loans.first
-    to_return = loans.map {|loan| Loan.new( loans )}
+    loan = SqlRunner.run(sql, values).first
+    to_return = Loan.new( loan )
     sql = "UPDATE loans
           SET returned = true
           WHERE id = $1;"
-    values = [to_return.id()]
+    values = [to_return.id().to_i]
     SqlRunner.run(sql, values)
   end
 
-  def return_legion()
-   @returned = true
-   sql = "UPDATE deployments
-         SET returned = true
-         WHERE id = $1;"
-   values = [@id]
-   SqlRunner.run(sql, values)
- end
 
   def self.delete_all()
     sql = "DELETE FROM loans"
