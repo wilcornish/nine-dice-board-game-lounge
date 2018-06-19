@@ -1,0 +1,18 @@
+<form class="" action="/loans" method="post">
+
+<label for="game_id">Game:</label>
+<select name="game_id" id="game_select">
+    <% @games.each do |game| %>
+      <option value=<%= game.id %>><%= game.name%></option>
+    <% end %>
+  </select>
+
+<label for="customer_id">Name:</label>
+<select name="customer_id" id="customer_select">
+  <% @customers.each do |customer| %>
+    <option value=<%= customer.id %>><%= customer.name%></option>
+  <%end  %>
+</select>
+
+  <input type="submit" value="Create Loan" />
+</form>
