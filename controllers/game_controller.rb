@@ -11,7 +11,7 @@ end
 
 #new
 get '/games/new' do
-  erb( :games/new )
+  erb( :'games/new' )
 end
 
 #edit
@@ -27,7 +27,7 @@ get '/games/:id' do
 end
 
 #create
-put '/games' do
+post '/games' do
   game = Game.new(params)
   game.save
   redirect to ('/games')
@@ -35,7 +35,7 @@ end
 
 #update
 put '/games/:id' do
-  game = Game.find(params['id'].to_i)
-  game.update(params)
+  @game = Game.new(params)
+  @game.update()
   redirect to ('/games/:id')
 end
