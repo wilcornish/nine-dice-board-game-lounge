@@ -2,7 +2,7 @@ require( 'sinatra' )
 require( 'sinatra/contrib/all' )
 require_relative( '../models/game.rb' )
 also_reload( '../models/*' )
-
+require('pry-byebug')
 #index
 get '/games' do
   @games = Game.all()
@@ -34,8 +34,9 @@ post '/games' do
 end
 
 #update
-put '/games/:id' do
+post '/games/:id' do
   @game = Game.new(params)
   @game.update()
-  redirect to ('/games/:id')
+  # binding.pry
+  redirect to ("/games/#{params[:id]}")
 end
