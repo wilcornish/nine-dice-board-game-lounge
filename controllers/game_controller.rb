@@ -3,31 +3,31 @@ require( 'sinatra/contrib/all' )
 require_relative( '../models/game.rb' )
 also_reload( '../models/*' )
 
-#show
+#index
 get '/games' do
   @games = Game.all()
   erb ( :'games/index' )
 end
 
-#index
-get '/games/:id' do
-  @games = Game.find(params['id'].to_i)
-  erb ( :'games/show' )
-end
-
 #new
 get '/games/new' do
-  erb( :'games/new' )
+  erb( :games/new )
 end
 
 #edit
-get 'games/:id/edit' do
-  @game = Game.find(params[:id])
-  erb (:'game/edit')
+get '/games/:id/edit' do
+  @game = Game.find(params['id'].to_i)
+  erb ( :'games/edit' )
+end
+
+#show
+get '/games/:id' do
+  @game = Game.find(params['id'].to_i)
+  erb ( :'games/show' )
 end
 
 #create
-post '/games' do
+put '/games' do
   game = Game.new(params)
   game.save
   redirect to ('/games')
