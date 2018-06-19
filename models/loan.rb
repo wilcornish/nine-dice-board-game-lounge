@@ -10,7 +10,7 @@ class Loan
     @id = options['id'].to_i if options['id']
     @customer_id = options['customer_id']
     @game_id = options['game_id']
-    @returned = false
+    @returned = options['returned']||false
     @day_borrowed = options['day_borrowed']
   end
 
@@ -104,7 +104,6 @@ class Loan
     SqlRunner.run(sql, values)
   end
 
-
   def self.delete_all()
     sql = "DELETE FROM loans"
     SqlRunner.run(sql)
@@ -116,8 +115,4 @@ class Loan
     values = [id]
     SqlRunner.run(sql, values)
   end
-
-
-
-
 end

@@ -2,6 +2,17 @@
 <p>Game: <%=loan.game.name%></p>
 <p>Borrower: <%=loan.customer.name  %></p>
 <p>Day Borrowed: <%= loan.day_borrowed %></p>
-<p>Returned: <%loan.returned%></p>
+<p>Returned: <%=loan.returned%></p>
+
+<%if loan.returned == false%>
+<form class="" action="/loans/<%=loan.id%>/check-in" method="post">
+  <input type="submit" value="Return Game" />
+</form>
+<%else%>
+<form class="" action="/loans/<%=loan.id%>/check-in" method="post">
+  <input type="submit" disabled value="Return Game" />
+</form>
+<%end%>
+
 <hr />
 <%end%>

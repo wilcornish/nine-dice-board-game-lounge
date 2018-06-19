@@ -40,3 +40,9 @@ post '/loans' do
     redirect to ('/loans')
   end
 end
+
+post '/loans/:id/check-in' do
+  game = Loan.find(params['id'].to_i).game()
+  Loan.check_in(game)
+  redirect to ('/loans')
+end
