@@ -28,6 +28,15 @@ end
 post '/loans' do
   game = Game.find("#{params['game_id']}")
   customer = Customer.find("#{params['customer_id']}")
-  Loan.check_out(customer, game)
-  redirect to ('/loans')
+  if customer.existing_loans?() == false
+    @loans = Loan.all()
+    erb ( :'loans/already_exists')
+  elsif game.avaliable?() == false
+    @games = Game.all()
+    @customers = Customer.all()
+    erb ( :'loans/no_stock')
+  else
+    Loan.check_out(customer, game)
+    redirect to ('/loans')
+  end
 end

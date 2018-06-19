@@ -87,11 +87,6 @@ class Loan
         })
       new_loan.save
     end
-    # elsif customer.existing_loans?() == false
-    #   return "Customer has borrowed game already"
-    # else
-    #   return "Game is already loaned"
-    # end
     return new_loan
   end
 
