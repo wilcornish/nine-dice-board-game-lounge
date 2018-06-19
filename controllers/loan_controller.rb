@@ -7,8 +7,7 @@ also_reload( '../models/*' )
 
 #show
 get '/loans' do
-  @customers = Customer.all()
-  @games = Game.all()
+  @loans = Loan.all()
   erb ( :'loans/index' )
 end
 
