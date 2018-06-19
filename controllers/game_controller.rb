@@ -6,13 +6,13 @@ also_reload( '../models/*' )
 #show
 get '/games' do
   @games = Game.all()
-  erb ( :game/index )
+  erb ( :games/index )
 end
 
 #index
 get '/games/:id' do
   @games = Game.find(params['id'].to_i)
-  erb ( :game/show )
+  erb ( :games/show )
 end
 
 #new

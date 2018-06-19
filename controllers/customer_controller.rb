@@ -6,13 +6,13 @@ also_reload( '../models/*' )
 #show
 get '/customers' do
   @customers = Customer.all()
-  erb ( :customer/index )
+  erb ( :customers/index )
 end
 
 #index
 get '/customers/:id' do
   @customers = Customer.find(params['id'].to_i)
-  erb ( :customer/show )
+  erb ( :customers/show )
 end
 
 #new
