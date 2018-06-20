@@ -98,8 +98,6 @@ class Loan
     return new_loan
   end
 
-
-
   def self.check_in(game)
     game.increment()
     game.update()

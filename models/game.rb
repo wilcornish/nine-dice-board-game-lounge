@@ -89,4 +89,25 @@ class Game
     SqlRunner.run(sql, values)
   end
 
+  def select_all_genre()
+    sql = "SELECT * FROM games WHERE genre_id = $1"
+    values = [@genre_id]
+    results = SqlRunner.run(sql, values)
+    return results.map { |game| Game.new(game) }
+  end
+
+  def select_all_play_time()
+    sql = "SELECT * FROM games WHERE play_time_id = $1"
+    values = [@play_time_id]
+    results = SqlRunner.run(sql, values)
+    return results.map { |game| Game.new(game) }
+  end
+
+  def select_all_player_count()
+    sql = "SELECT * FROM games WHERE player_count_id = $1"
+    values = [@player_count_id]
+    results = SqlRunner.run(sql, values)
+    return results.map { |game| Game.new(game) }
+  end
+
 end

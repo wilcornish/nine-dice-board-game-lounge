@@ -1,12 +1,43 @@
 <hgroup class="error_message"><h2>That game is already on loan</h2>
-<h3>Please suggest another</h3></hgroup>
+<h3>Alternative suggestions below</h3></hgroup>
+<%same_genre = @game.select_all_genre
+  same_time = @game.select_all_play_time
+  same_players = @game.select_all_player_count
+  %>
+
+<section class="entry"><h4>Similar Play Time</h4>
+<%suggestion1 = same_time.sample%>
+    <p>Name: <%= suggestion1.name() %> </p>
+    <p>Genre: <%=Genre.find(suggestion1.genre_id).genre  %></p>
+    <p>Player Count:
+    <%=PlayerCount.find(suggestion1.player_count_id).player_count%></p>
+    <p>Play Time: <%=PlayTime.find(suggestion1.play_time_id).play_time %></p>
+</section>
+
+<section class="entry"><h4>Similar Genre</h4>
+  <%suggestion2 = same_genre.sample %>
+  <p>Name: <%= suggestion2.name() %> </p>
+  <p>Genre: <%=Genre.find(suggestion2.genre_id).genre  %></p>
+  <p>Player Count:
+  <%=PlayerCount.find(suggestion2.player_count_id).player_count%></p>
+  <p>Play Time: <%=PlayTime.find(suggestion2.play_time_id).play_time %></p></section>
+
+<section class="entry"><h4>Similar Number of Players</h4>
+  <%suggestion3 = same_players.sample %>
+   <p>Name: <%= suggestion3.name() %> </p>
+    <p>Genre: <%=Genre.find(suggestion3.genre_id).genre  %></p>
+    <p>Player Count:
+    <%=PlayerCount.find(suggestion3.player_count_id).player_count%></p>
+  <p>Play Time: <%=PlayTime.find(suggestion3.play_time_id).play_time %></p>
+</section>
+
 <form class="create_new" action="/loans" method="post">
 <label for="game_id">Game:</label>
 <select name="game_id" id="game_select">
     <% @games.each do |game| %>
       <option value=<%= game.id %>><%= game.name%></option>
     <% end %>
-  </select>
+  </select
 
 <label for="customer_id">Name:</label>
 <select name="customer_id" id="customer_select">

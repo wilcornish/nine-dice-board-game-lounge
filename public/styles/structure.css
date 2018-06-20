@@ -5,6 +5,16 @@ body {
   background-size: cover;
 }
 
+h2 {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+h3 {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+h4 {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
 .grid {
   display: grid;
   width: auto;

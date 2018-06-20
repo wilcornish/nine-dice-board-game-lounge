@@ -105,9 +105,67 @@ game3 = Game.new({
     'play_time_id' => play_time1.id
     })
 
+game4 = Game.new({
+    'name' => 'Azul',
+    'owner' => 'Wil',
+    'genre_id' => genre3.id,
+    'player_count_id' => player_count3.id,
+    'play_time_id' => play_time2.id
+    })
+
+
+game5 = Game.new({
+    'name' => 'Pandemic',
+    'owner' => 'Dave',
+    'genre_id' => genre2.id,
+    'player_count_id' => player_count2.id,
+    'play_time_id' => play_time3.id
+    })
+
+game6= Game.new({
+    'name' => 'Space Alert',
+    'owner' => 'Tom',
+    'genre_id' => genre1.id,
+    'player_count_id' => player_count1.id,
+    'play_time_id' => play_time2.id
+    })
+
+
+game7 = Game.new({
+    'name' => 'Dr Panic',
+    'owner' => 'Clare',
+    'genre_id' => genre1.id,
+    'player_count_id' => player_count2.id,
+    'play_time_id' => play_time1.id
+    })
+
+
+game8 = Game.new({
+    'name' => 'Sub Terra',
+    'owner' => 'Alfred',
+    'genre_id' => genre3.id,
+    'player_count_id' => player_count3.id,
+    'play_time_id' => play_time3.id
+    })
+
+
+game9 = Game.new({
+    'name' => 'FUSE',
+    'owner' => 'Clare',
+    'genre_id' => genre2.id,
+    'player_count_id' => player_count2.id,
+    'play_time_id' => play_time1.id
+    })
+
 game1.save()
 game2.save()
 game3.save()
+game9.save()
+game8.save()
+game7.save()
+game6.save()
+game5.save()
+game4.save()
 
 loan1 = Loan.new({
   'customer_id' => customer1.id,
