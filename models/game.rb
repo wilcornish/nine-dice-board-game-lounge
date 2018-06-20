@@ -2,7 +2,7 @@ require_relative('../db/sql_runner.rb')
 
 class Game
 
-  attr_reader( :id, :name, :owner, :times_played,  :genre_id, :player_count, :play_time )
+  attr_reader( :id, :name, :owner, :times_played,  :genre_id, :player_count, :play_time_id )
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
@@ -11,7 +11,7 @@ class Game
     @times_played = options['times_played']|| 0
     @genre_id = options['genre_id']
     @player_count = options['player_count'].to_i
-    @play_time = options['play_time'].to_i
+    @play_time_id = options['play_time_id'].to_i
   end
 
   def increment
@@ -28,24 +28,24 @@ class Game
       times_played,
       genre_id,
       player_count,
-      play_time
+      play_time_id
     )
     VALUES
     (
       $1, $2, $3, $4, $5, $6
     )
     RETURNING id"
-    values = [@name, @owner, @times_played, @genre_id, @player_count, @play_time]
+    values = [@name, @owner, @times_played, @genre_id, @player_count, @play_time_id]
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
   end
 
   def update()
     sql = "UPDATE games
-      SET (name, owner, times_played, genre_id, player_count, play_time)
+      SET (name, owner, times_played, genre_id, player_count, play_time_id)
       = ($1, $2, $3, $4, $5, $6)
       WHERE ID = $7"
-    values = [@name, @owner, @times_played, @genre_id, @player_count, @play_time, @id]
+    values = [@name, @owner, @times_played, @genre_id, @player_count, @play_time_id, @id]
     SqlRunner.run(sql, values)
   end
 

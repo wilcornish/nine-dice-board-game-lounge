@@ -2,7 +2,6 @@ require('minitest/autorun')
 require('pry-byebug')
 
 require_relative('../genre.rb')
-require_relative('../game.rb')
 
 class GenreTest < MiniTest::Test
 

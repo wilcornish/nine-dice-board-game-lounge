@@ -4,10 +4,9 @@
 <section class="entry">
 <p>Name: <%= game.name() %> </p>
 <p>Times Played: <%=game.times_played() %></p>
-<p>Genre: <%=Genre.find(game.genre_id).genre  %></p>
-<p>Player Count:
-<%=game.player_count()  %></p>
-<p>Play Time: <%=game.play_time()  %></p>
+<p>Genre: <%=Genre.find(game.genre_id).genre()  %></p>
+<p>Player Count: <%=game.player_count()  %></p>
+<p>Play Time: <%=PlayTime.find(game.play_time_id).play_time()  %></p>
 
 <a href="/games/<%=game.id()%>">Show Detail</a>
 </section>

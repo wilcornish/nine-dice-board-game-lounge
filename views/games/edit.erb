@@ -7,14 +7,20 @@
   <input id="owner" type="text" name="owner" value="<%= @game.owner() %> " />
   <br />
   <label for="genre_id">Genre:</label>
-  <input type="text" name="genre_id" value="<%=@game.genre_id.genre  %>">
-  <br />
+  <select name="genre_id" id="genre_id" value="<%=Genre.find(@game.genre_id)%>"
+  <% @genres.each do |genre| %>
+    <option value=<%= genre.id %>><%= genre.genre%></option>
+  <% end %>
+</select>
+<br />
   <label for="player_count">Player Count:</label>
   <input id="player_count" style="width:4ch" type="number" name="player_count" value="<%=@game.player_count()  %>"/>
-
-  <label for="play_time">Play Time:</label>
-  <input type="number" style="width:5ch" name="play_time" value="<%=@game.play_time()  %>">
+  <label for="play_time_id">Play Time:</label>
+  <select name="play_time_id" id="play_time_id" value="<%=PlayTime.find(@game.play_time_id)%>">
+      <% @play_times.each do |play_time| %>
+        <option value=<%= play_time.id %>><%= play_time.play_time%></option>
+      <% end %>
+    </select>
   <br />
-
   <input type="submit" value="Update Game" />
 </form>

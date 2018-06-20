@@ -6,8 +6,8 @@
   <label for="owner">Owner:</label>
   <input id="owner" type="text" name="owner" value=""/>
   <br />
-  <label for="genre">Genre:</label>
-  <select name="game_id" id="game_select">
+  <label for="genre_id">Genre:</label>
+  <select name="game_id" id="game_id">
       <% @genres.each do |genre| %>
         <option value=<%= genre.id %>><%= genre.genre%></option>
       <% end %>
@@ -16,8 +16,12 @@
   <label for="player_count">Player Count:</label>
   <input id="player_count" style="width:4ch" type="number" name="player_count" value=""/>
 
-  <label for="play_time">Play Time:</label>
-  <input type="number" style="width:5ch" name="play_time" value="%>">
+  <label for="play_time_id">Play Time:</label>
+  <select name="play_time_id" id="play_time_id">
+      <% @play_times.each do |play_time| %>
+        <option value=<%= play_time.id %>><%= play_time.play_time%></option>
+      <% end %>
+    </select>
   <br />
   <input type="submit" value="Add Game" />
 
