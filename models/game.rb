@@ -15,7 +15,9 @@ class Game
   end
 
   def increment
-    @times_played += 1
+    play_count = @times_played.to_i
+    play_count += 1
+    @times_played = play_count
   end
 
   def save()
