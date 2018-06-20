@@ -1,9 +1,8 @@
 body {
   font-family: 'Lato', sans-serif;
   font-size: 0.9rem;
-  background: url('/images/cube-568059.jpg');
-   background-repeat: no-repeat;
-  background-size: 100vmax
+  background: url('/images/cube-568059.jpg')  no-repeat center center fixed;
+  background-size: cover;
 }
 
 .grid {
@@ -11,24 +10,34 @@ body {
   width: auto;
   height: auto;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 5% 1fr 1fr;
+  grid-template-rows: 5% 5% 1fr;
   grid-gap: 20px 10px;
   padding: 0 20px;
   grid-auto-flow: row;
 }
 
 .entry {
-  grid-area: span 1/ span 1;
+  grid-area: 3 / auto / span 1/ span 1;
   flex-direction: column;
   align-items: flex-start;
-  background-color: #ffffffd0
+  background-color: #ffffffd0;
+  padding: 15px;
+  padding-top: 5px;
 }
 
 .edit {
-  grid-area: 2/ 1/ span 3/ span;
-  background-color: #ffffffd0
+  grid-area: 3/ auto / span 3/ span 3;
+  background-color: #ffffffd0;
+  padding: 15px;
+  padding-top: 5px;
+  align-items: center;
 }
 
+.new_game {
+  grid-area: span 1 / span 3 ;
+  background-color: #ffffffd0;
+  padding: 10px;
+}
 
 /* font-family: 'Lato', sans-serif;
 font-family: 'Yanone Kaffeesatz', sans-serif; */
