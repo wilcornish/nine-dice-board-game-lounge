@@ -13,9 +13,13 @@
       <% end %>
     </select>
   <br />
-  <label for="player_count">Player Count:</label>
-  <input id="player_count" style="width:4ch" type="number" name="player_count" value=""/>
-
+  <label for="player_count_id">Player Count:</label>
+  <select name="player_count_id" id="player_count_id">
+      <% @player_counts.each do |player_count| %>
+        <option value=<%= player_count.id %>><%= player_count.player_count%></option>
+      <% end %>
+    </select>
+    <br />
   <label for="play_time_id">Play Time:</label>
   <select name="play_time_id" id="play_time_id">
       <% @play_times.each do |play_time| %>

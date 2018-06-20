@@ -4,7 +4,7 @@
 <p>Times Played: <%=@game.times_played() %></p>
 <p>Genre: <%=Genre.find(@game.genre_id).genre  %></p>
 <p>Player Count:
-<%=@game.player_count()  %></p>
+<%=PlayerCount.find(@game.player_count_id).player_count%></p>
 <p>Play Time: <%=PlayTime.find(@game.play_time_id).play_time %></p>
 
 <a href="/games/<%=@game.id%>/edit">Edit Game</a>

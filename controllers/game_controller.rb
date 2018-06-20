@@ -3,6 +3,7 @@ require( 'sinatra/contrib/all' )
 require_relative( '../models/game.rb' )
 require_relative( '../models/genre.rb' )
 require_relative( '../models/play_time.rb' )
+require_relative( '../models/player_count.rb' )
 also_reload( '../models/*' )
 require('pry-byebug')
 #index
@@ -15,6 +16,7 @@ end
 get '/games/new' do
   @genres = Genre.all()
   @play_times = PlayTime.all()
+  @player_counts = PlayerCount.all()
   erb( :'games/new' )
 end
 
@@ -23,6 +25,7 @@ get '/games/:id/edit' do
   @genres = Genre.all()
   @play_times = PlayTime.all()
   @game = Game.find(params['id'].to_i)
+  @player_counts = PlayerCount.all()
   erb ( :'games/edit' )
 end
 
