@@ -1,4 +1,6 @@
-<form class="" action="/loans" method="post">
+<a class="create_new" href="../customers/new">Add new customer</a>
+
+<form class="edit" action="/loans" method="post">
 
 <label for="game_id">Game:</label>
 <select name="game_id" id="game_select">
@@ -13,6 +15,6 @@
     <option value=<%= customer.id %>><%= customer.name%></option>
   <%end  %>
 </select>
-
+</br>
   <input type="submit" value="Create Loan" />
 </form>

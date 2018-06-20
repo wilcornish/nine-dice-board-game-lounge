@@ -1,20 +1,20 @@
-<form action="/games" method="post">
+<form class="edit" action="/games" method="post">
 
   <label for="name">Name:</label>
   <input id="Name" type="text" name="name" value="" />
-
+  <br />
   <label for="owner">Owner:</label>
   <input id="owner" type="text" name="owner" value=""/>
-
+  <br />
   <label for="genre">Genre:</label>
   <input type="text" name="genre" value="">
-
+  <br />
   <label for="player_count">Player Count:</label>
-  <input id="player_count" type="number" name="player_count" value=""/>
+  <input id="player_count" style="width:4ch" type="number" name="player_count" value=""/>
 
   <label for="play_time">Play Time:</label>
-  <input type="number" name="play_time" value="%>">
-
+  <input type="number" style="width:5ch" name="play_time" value="%>">
+  <br />
   <input type="submit" value="Add Game" />
 
 </form>

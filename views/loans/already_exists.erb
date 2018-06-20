@@ -1,12 +1,19 @@
-<h2>This customer has already borrowed a game.</h2>
+<h2 class="error_message">This customer has already borrowed a game.</h2>
 
 <%for loan in @loans %>
+<section class="entry">
 <p>Game: <%=loan.game.name%></p>
 <p>Borrower: <%=loan.customer.name  %></p>
 <p>Day Borrowed: <%= loan.day_borrowed %></p>
 <p>Returned: <%=loan.returned%></p>
-<form class="" action="/loans/<%=loan.id%>/check-in" method="post">
-  <input type="submit" value="Return Game" />
-</form>
-<hr />
+  <%if loan.returned == "t"%>
+    <form class="" action="/loans/<%=loan.id%>/check-in" method="post">
+      <input type="submit"  disabled value="Return Game" />
+    </form>
+  <%else%>
+    <form class="" action="/loans/<%=loan.id%>/check-in" method="post">
+      <input type="submit" value="Return Game" />
+    </form>
+  <%end%>
+  </section>
 <%end%>

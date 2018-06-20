@@ -13,16 +13,16 @@ body {
   grid-template-rows: 5% 5% 1fr;
   grid-gap: 20px 10px;
   padding: 0 20px;
-  grid-auto-flow: row;
+  grid-auto-flow:
 }
 
 .entry {
-  grid-area: 3 / auto / span 1/ span 1;
+  grid-area: auto / auto / span 1/ span 1;
   flex-direction: column;
-  align-items: flex-start;
   background-color: #ffffffd0;
   padding: 15px;
   padding-top: 5px;
+  border-radius: 10px;
 }
 
 .edit {
@@ -30,13 +30,31 @@ body {
   background-color: #ffffffd0;
   padding: 15px;
   padding-top: 5px;
-  align-items: center;
+  align-content: center;
+  text-align: center;
+  line-height: 2.5;
+  border-radius: 10px;
+
 }
 
-.new_game {
+.create_new {
   grid-area: span 1 / span 3 ;
   background-color: #ffffffd0;
   padding: 10px;
+  border-radius: 5px;
+  align-content: center;
+  text-align: center;
+  line-height: 2.5;
+}
+
+.error_message {
+  grid-area: span 1 / span 3 ;
+  background-color: #ffffffd0;
+  padding: 10px;
+  border-radius: 5px;
+  align-content: center;
+  text-align: center;
+  line-height: 0.8;
 }
 
 /* font-family: 'Lato', sans-serif;
