@@ -8,7 +8,7 @@ class Game
     @id = options['id'].to_i if options['id']
     @name = options['name']
     @owner = options['owner']
-    @times_played = 0
+    @times_played = options['times_played']|| 0
     @genre = options['genre']
     @player_count = options['player_count'].to_i
     @play_time = options['play_time'].to_i
