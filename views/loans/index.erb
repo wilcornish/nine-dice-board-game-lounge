@@ -3,7 +3,7 @@
 <p>Game: <%=loan.game.name%></p>
 <p>Borrower: <%=loan.customer.name  %></p>
 <p>Day Borrowed: <%= loan.day_borrowed %></p>
-<p>Returned: <%=loan.returned%></p>
+<p>Returned: <%=loan.humanise_boolean%></p>
   <%if loan.returned == "t"%>
     <form class="" action="/loans/<%=loan.id%>/check-in" method="post">
       <input type="submit"  disabled value="Return Game" />

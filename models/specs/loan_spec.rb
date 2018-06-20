@@ -43,10 +43,4 @@ class LoanTest < MiniTest::Test
     assert_equal(true, @loan1.returned)
   end
 
-  # def test_check_in
-  #   @loan1.check_in
-  #   assert_equal(true, @loan1.returned)
-  #   assert_equal(1, @game1.times_played)
-  # end
-
 end

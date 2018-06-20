@@ -18,6 +18,14 @@ class Loan
     @returned = true
   end
 
+  def humanise_boolean
+    if @returned == "f"
+      return "No"
+    else
+      return "Yes"
+    end
+  end
+
   def save()
     sql = "INSERT INTO loans
     (
@@ -89,6 +97,8 @@ class Loan
     end
     return new_loan
   end
+
+
 
   def self.check_in(game)
     game.increment()
