@@ -1,11 +1,29 @@
 require_relative( "../models/customer.rb" )
 require_relative( "../models/loan.rb" )
 require_relative( "../models/game.rb" )
+require_relative( "../models/genre.rb" )
 require("pry-byebug")
 
 Loan.delete_all()
 Customer.delete_all()
 Game.delete_all()
+Genre.delete_all()
+
+genre1 = Genre.new({
+  'genre' => 'Comedy'
+  })
+
+genre2 = Genre.new({
+  'genre' => 'Co-operative'
+  })
+
+genre3 = Genre.new({
+  'genre' => 'Tile-laying'
+  })
+
+genre1.save()
+genre2.save()
+genre3.save()
 
 customer1 = Customer.new({
   'badge_number' => 450,
@@ -29,7 +47,7 @@ customer3.save()
 game1 = Game.new({
   'name' => 'Galaxy Trucker',
   'owner' => 'Clare',
-  'genre' => 'Comedy',
+  'genre_id' => genre1.id,
   'player_count' => 3,
   'play_time' => 30
   })
@@ -37,7 +55,7 @@ game1 = Game.new({
 game2  = Game.new({
    'name' => 'Mysterium',
    'owner' => 'Wil',
-   'genre' => 'co-operative',
+   'genre_id' => genre2.id,
    'player_count' => 5,
    'play_time' => 45
    })
@@ -45,7 +63,7 @@ game2  = Game.new({
 game3 = Game.new({
     'name' => 'Barenpark',
     'owner' => 'Al',
-    'genre' => 'tile-laying',
+    'genre_id' => genre3.id,
     'player_count' => 4,
     'play_time' => 20
     })

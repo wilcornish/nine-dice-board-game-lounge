@@ -7,7 +7,11 @@
   <input id="owner" type="text" name="owner" value=""/>
   <br />
   <label for="genre">Genre:</label>
-  <input type="text" name="genre" value="">
+  <select name="game_id" id="game_select">
+      <% @genres.each do |genre| %>
+        <option value=<%= genre.id %>><%= genre.genre%></option>
+      <% end %>
+    </select>
   <br />
   <label for="player_count">Player Count:</label>
   <input id="player_count" style="width:4ch" type="number" name="player_count" value=""/>

@@ -1,13 +1,19 @@
 DROP TABLE loans;
 DROP TABLE customers;
 DROP TABLE games;
+DROP TABLE genres;
+
+CREATE TABLE genres (
+  id SERIAL8 PRIMARY KEY,
+  genre VARCHAR(255)
+);
 
 CREATE TABLE games (
   id SERIAL8 PRIMARY KEY,
   name VARCHAR(255),
   owner VARCHAR(255),
   times_played INT4,
-  genre VARCHAR(255),
+  genre_id INT8 REFERENCES genres(id),
   player_count INT4,
   play_time INT4
 );

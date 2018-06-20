@@ -2,14 +2,14 @@ require_relative('../db/sql_runner.rb')
 
 class Game
 
-  attr_reader( :id, :name, :owner, :times_played,  :genre, :player_count, :play_time )
+  attr_reader( :id, :name, :owner, :times_played,  :genre_id, :player_count, :play_time )
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @name = options['name']
     @owner = options['owner']
     @times_played = options['times_played']|| 0
-    @genre = options['genre']
+    @genre_id = options['genre_id']
     @player_count = options['player_count'].to_i
     @play_time = options['play_time'].to_i
   end
@@ -26,7 +26,7 @@ class Game
       name,
       owner,
       times_played,
-      genre,
+      genre_id,
       player_count,
       play_time
     )
@@ -35,17 +35,17 @@ class Game
       $1, $2, $3, $4, $5, $6
     )
     RETURNING id"
-    values = [@name, @owner, @times_played, @genre, @player_count, @play_time]
+    values = [@name, @owner, @times_played, @genre_id, @player_count, @play_time]
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
   end
 
   def update()
     sql = "UPDATE games
-      SET (name, owner, times_played, genre, player_count, play_time)
+      SET (name, owner, times_played, genre_id, player_count, play_time)
       = ($1, $2, $3, $4, $5, $6)
       WHERE ID = $7"
-    values = [@name, @owner, @times_played, @genre, @player_count, @play_time, @id]
+    values = [@name, @owner, @times_played, @genre_id, @player_count, @play_time, @id]
     SqlRunner.run(sql, values)
   end
 
@@ -81,7 +81,7 @@ class Game
   def self.delete_all
     sql = "DELETE FROM games"
     SqlRunner.run(sql)
-end
+  end
 
   def self.delete( id )
     sql = "DELETE FROM games WHERE id = $1"

@@ -1,6 +1,7 @@
 require( 'sinatra' )
 require( 'sinatra/contrib/all' )
 require_relative( '../models/game.rb' )
+require_relative( '../models/genre.rb' )
 also_reload( '../models/*' )
 require('pry-byebug')
 #index
@@ -11,6 +12,7 @@ end
 
 #new
 get '/games/new' do
+  @genres = Genre.all()
   erb( :'games/new' )
 end
 
