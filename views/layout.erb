@@ -3,14 +3,18 @@
   <head>
     <meta charset="utf-8">
     <title>Nine Dice Board Game Library</title>
+    <link rel="stylesheet" href="/styles/structure.css">
   </head>
   <body>
+    <main class="grid">
     <nav>
       <ul>
         <li><a href="/games">Collection</a></li>
         <li><a href="/loans">Loans</a></li>
         <li><a href="/loans/new">New Loan</a></li>
       </ul>
+    </nav>
       <%= yield %>
+    </main>
   </body>
 </html>

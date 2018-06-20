@@ -1,4 +1,4 @@
-<form action="/games/<%=@game.id()  %>" method="post">
+<form class="edit" action="/games/<%=@game.id()  %>" method="post">
 
   <label for="name">Name:</label>
   <input id="Name" type="text" name="name" value="<%= @game.name() %> " />

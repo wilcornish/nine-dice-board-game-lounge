@@ -1,8 +1,7 @@
 <a href="/customers/new">Add new customer</a>
-
+<section class="entry">
 <% for customer in @customers %>
 <p>Name: <%= customer.name() %> </p>
 <p>Badge Number: <%=customer.badge_number() %></p>
-
-<hr />
+<section>
 <% end %>
