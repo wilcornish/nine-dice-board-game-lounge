@@ -2,16 +2,16 @@ require_relative('../db/sql_runner.rb')
 
 class Game
 
-  attr_reader( :id, :name, :owner, :times_played,  :genre, :player_count, :play_time )
+  attr_reader( :id, :name, :owner, :times_played,  :genre_id, :player_count_id, :play_time_id )
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @name = options['name']
     @owner = options['owner']
     @times_played = options['times_played']|| 0
-    @genre = options['genre']
-    @player_count = options['player_count'].to_i
-    @play_time = options['play_time'].to_i
+    @genre_id = options['genre_id']
+    @player_count_id = options['player_count_id'].to_i
+    @play_time_id = options['play_time_id'].to_i
   end
 
   def increment
@@ -26,26 +26,26 @@ class Game
       name,
       owner,
       times_played,
-      genre,
-      player_count,
-      play_time
+      genre_id,
+      player_count_id,
+      play_time_id
     )
     VALUES
     (
       $1, $2, $3, $4, $5, $6
     )
     RETURNING id"
-    values = [@name, @owner, @times_played, @genre, @player_count, @play_time]
+    values = [@name, @owner, @times_played, @genre_id, @player_count_id, @play_time_id]
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
   end
 
   def update()
     sql = "UPDATE games
-      SET (name, owner, times_played, genre, player_count, play_time)
+      SET (name, owner, times_played, genre_id, player_count_id, play_time_id)
       = ($1, $2, $3, $4, $5, $6)
       WHERE ID = $7"
-    values = [@name, @owner, @times_played, @genre, @player_count, @play_time, @id]
+    values = [@name, @owner, @times_played, @genre_id, @player_count_id, @play_time_id, @id]
     SqlRunner.run(sql, values)
   end
 
@@ -81,12 +81,33 @@ class Game
   def self.delete_all
     sql = "DELETE FROM games"
     SqlRunner.run(sql)
-end
+  end
 
   def self.delete( id )
     sql = "DELETE FROM games WHERE id = $1"
     values = [@id]
     SqlRunner.run(sql, values)
+  end
+
+  def select_all_genre()
+    sql = "SELECT * FROM games WHERE genre_id = $1"
+    values = [@genre_id]
+    results = SqlRunner.run(sql, values)
+    return results.map { |game| Game.new(game) }
+  end
+
+  def select_all_play_time()
+    sql = "SELECT * FROM games WHERE play_time_id = $1"
+    values = [@play_time_id]
+    results = SqlRunner.run(sql, values)
+    return results.map { |game| Game.new(game) }
+  end
+
+  def select_all_player_count()
+    sql = "SELECT * FROM games WHERE player_count_id = $1"
+    values = [@player_count_id]
+    results = SqlRunner.run(sql, values)
+    return results.map { |game| Game.new(game) }
   end
 
 end

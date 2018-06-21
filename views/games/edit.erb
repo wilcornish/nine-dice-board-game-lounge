@@ -6,15 +6,26 @@
   <label for="owner">Owner:</label>
   <input id="owner" type="text" name="owner" value="<%= @game.owner() %> " />
   <br />
-  <label for="genre">Genre:</label>
-  <input type="text" name="genre" value="<%=@game.genre()  %>">
+  <label for="genre_id">Genre:</label>
+  <select name="genre_id" id="genre_id">
+  <% @genres.each do |genre| %>
+    <option value=<%= genre.id %>><%= genre.genre%></option>
+  <% end %>
+</select>
+<br />
+  <label for="player_count_id">Player Count:</label>
+  <select name="player_count_id" id="player_count_id" value="<%=PlayerCount.find(@game.player_count_id)%>">
+      <% @player_counts.each do |player_count| %>
+        <option value=<%= player_count.id %>><%= player_count.player_count%></option>
+      <% end %>
+    </select>
+    <br />
+  <label for="play_time_id">Play Time:</label>
+  <select name="play_time_id" id="play_time_id" value="<%=PlayTime.find(@game.play_time_id)%>">
+      <% @play_times.each do |play_time| %>
+        <option value=<%= play_time.id %>><%= play_time.play_time%></option>
+      <% end %>
+    </select>
   <br />
-  <label for="player_count">Player Count:</label>
-  <input id="player_count" style="width:4ch" type="number" name="player_count" value="<%=@game.player_count()  %>"/>
-
-  <label for="play_time">Play Time:</label>
-  <input type="number" style="width:5ch" name="play_time" value="<%=@game.play_time()  %>">
-  <br />
-
   <input type="submit" value="Update Game" />
 </form>

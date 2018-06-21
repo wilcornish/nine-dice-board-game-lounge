@@ -24,17 +24,23 @@ get '/loans/:id' do
   erb ( :'loans/show' )
 end
 
+get '/loans/no_stock/:id' do
+  @games = Game.all()
+  @customers = Customer.all()
+  @game = Game.find(params['id'].to_i)
+  erb (:'loans/no_stock')
+end
+
 #create
 post '/loans' do
-  game = Game.find("#{params['game_id']}")
-  customer = Customer.find("#{params['customer_id']}")
-  if customer.existing_loans?() == false
+  game = Game.find(params['game_id'])
+  customer = Customer.find(params['customer_id'])
+  if !customer.existing_loans?()
     @loans = Loan.all()
     erb ( :'loans/already_exists')
-  elsif game.avaliable?() == false
-    @games = Game.all()
-    @customers = Customer.all()
-    erb ( :'loans/no_stock')
+  elsif !game.avaliable?()
+
+    redirect to "/loans/no_stock/#{params['game_id']}"
   else
     Loan.check_out(customer, game)
     redirect to ('/loans')
