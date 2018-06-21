@@ -5,5 +5,5 @@ require_relative('./controllers/game_controller.rb')
 require_relative('./controllers/loan_controller.rb')
 
 get '/' do
-  redirect to ('/collection')
+  redirect to ('/games')
 end
