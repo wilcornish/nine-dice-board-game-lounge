@@ -182,6 +182,3 @@ loan2 = Loan.new({
 
 loan1.save()
 loan2.save()
-
-binding.pry
-nil
