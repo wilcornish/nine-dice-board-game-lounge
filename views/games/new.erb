@@ -7,7 +7,7 @@
   <input id="owner" type="text" name="owner" value=""/>
   <br />
   <label for="genre_id">Genre:</label>
-  <select name="game_id" id="game_id">
+  <select name="genre_id" id="genre_id">
       <% @genres.each do |genre| %>
         <option value=<%= genre.id %>><%= genre.genre%></option>
       <% end %>
