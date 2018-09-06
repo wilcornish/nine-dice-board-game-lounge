@@ -1,19 +1,16 @@
 nav {
 grid-area: 1 / 1 / span 1 / span 3;
-align-content: center;
+align-content: left;
 display: flex;
 align-items: center;
 justify-content: space-around;
-background: #ffffffd0;
-border-radius: 10px;
+background: ##2699FB;
 }
 
 nav ul li {
   display: inline-block;
     margin-left:30px;
     margin-right:30px;
-    font-size: 2rem;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
 nav ul li:first-child {
@@ -24,7 +21,7 @@ nav ul li:last-child {
 }
 
 nav ul a {
-  color: #000000;
+  color: #ffffff;
   font-style: normal;
   text-decoration: none;
 }
