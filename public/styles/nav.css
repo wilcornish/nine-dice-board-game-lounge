@@ -5,6 +5,7 @@ display: flex;
 align-items: center;
 justify-content: space-around;
 background: #ffffffd0;
+border-radius: 10px;
 }
 
 nav ul li {
