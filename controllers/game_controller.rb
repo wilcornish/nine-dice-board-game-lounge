@@ -4,7 +4,6 @@ require_relative( '../models/game.rb' )
 require_relative( '../models/genre.rb' )
 require_relative( '../models/play_time.rb' )
 require_relative( '../models/player_count.rb' )
-also_reload( '../models/*' )
 require('pry-byebug')
 #index
 get '/games' do

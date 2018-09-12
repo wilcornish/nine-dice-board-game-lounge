@@ -3,7 +3,7 @@ require( 'sinatra/contrib/all' )
 require_relative( '../models/customer.rb' )
 require_relative( '../models/game.rb' )
 require_relative( '../models/loan.rb' )
-also_reload( '../models/*' )
+
 
 #index
 get '/loans' do
