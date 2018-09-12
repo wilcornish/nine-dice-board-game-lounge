@@ -21,8 +21,11 @@ nav ul li:last-child {
 }
 
 
+
 nav ul a {
-  color: #ffffff;
+  color: #000000;
   font-style: normal;
   text-decoration: none;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-size: 3.5ch
 }
