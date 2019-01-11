@@ -13,7 +13,7 @@ Clone or download the repository, and run the server file from within the folder
 ```
 ruby app.rb
 ```
-The app is now running for web access on http://localhost:4567
+The app is now running for local access on http://localhost:4567
 
 This will include seeded demonstration data, to remove or modify this, modify the file: 
 ```
